@@ -1,5 +1,6 @@
 import { FaStar } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa";
+import './index.scss'
 
 export interface Props{
     rating: number;
@@ -20,7 +21,7 @@ export default function StarRating(props: Props) {
     }
 
     return (
-        <div>
+        <div className="movie-rate">
             {fullStars.map(index => 
                 <FaStar key={index}/>
             )}
