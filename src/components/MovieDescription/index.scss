@@ -1,0 +1,45 @@
+.description-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    width: 70%;
+    text-align: center;
+    margin: 2em auto;
+    gap: 1.4em;
+
+    h2 {
+        margin-bottom: .8em;
+    }
+
+    .img-container{
+        width: 70%;
+
+        img{
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .production-details{
+        .production_companies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            padding: 24px 3%;
+            gap: 20px;
+    
+            img {
+                filter: brightness(0) saturate(100%) invert(100%);
+                width: 90px;
+                opacity: 1;
+            }
+
+            p{
+                align-content: center;
+            }
+        }
+    }
+    
+}
