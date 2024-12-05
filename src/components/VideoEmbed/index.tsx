@@ -1,13 +1,14 @@
 import { Video } from "@/types/video"
+import './index.scss'
 
-export interface Props{
+export interface Props {
     movie: Video
 }
 
-export default function VideoEmbed(props: Props){
+export default function VideoEmbed(props: Props) {
     const movie = props.movie
     return (
-        <div>
+        <div className="youtube-content">
             <h1>{movie.name}</h1>
             <iframe
                 key={movie.id}
