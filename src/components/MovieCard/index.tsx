@@ -1,6 +1,7 @@
 import { Movie } from "@/types/movie"
 import StarRating from "../StartRating";
 import './index.scss'
+import Link from "next/link";
 
 export interface Props{
     movie: Movie
@@ -27,8 +28,9 @@ export default function MovieCard(props: Props){
                             movie.overview.length > 100 ? `${movie.overview.substring(0, 100)}...` : movie.overview
                         }</p>
                     }
-
-                    <button className="btn-dafault">Ver mais</button>
+                    <Link href={`/movie/${movie.id}`}>
+                        <button className="btn-dafault" >Ver mais</button>
+                    </Link>
                 </div>
             </div>
         </li>
