@@ -23,13 +23,14 @@ export async function GetTrailer(movieId: string, language: string = "pt-BR") {
     }
 }
 
-export async function GetList(language: string = "pt-BR"){
+export async function GetList(language: string = "pt-BR", page: number = 1){
     try{
         const response = await api.get('discover/movie', {
             params: {
                 api_key: API_KEY,
                 language,
-                include_adult: false
+                include_adult: false,
+                page,
             }
         }) 
 
