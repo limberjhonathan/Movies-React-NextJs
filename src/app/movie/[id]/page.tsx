@@ -6,6 +6,7 @@ import VideoEmbed from "@/components/VideoEmbed";
 import { GetTrailer, GetDetails } from "@/app/services/movieServices";
 import MovieDescription from "@/components/MovieDescription";
 import { MovieDiscription } from "@/types/movieDiscription";
+import './page.scss'
 
 interface Props {
   params: { id: string }
@@ -47,18 +48,20 @@ export default function MovieDetails({ params }: Props) {
   // console.log(dubladoVideos, 'dublado')
   // console.log(legendadoVideos, 'legendado')
   const details = dubladoVideos.length > 0 ? dubladoVideos : legendadoVideos;
-  console.log(detailsMovie)
+  console.log(detailsMovie, 'traillers')
   return (
-    <div>
+    <div className="content-details">
       {detailsMovie ? (
         <MovieDescription movie={detailsMovie} />
       ) : (
         <p>Carregando detalhes do filme...</p>
       )}
 
-      {details.map((movie) => (
-        <VideoEmbed key={movie.id} movie={movie} />
-      ))}
+      <div className="trailers-wrapper">
+        {details.map((movie) => (
+          <VideoEmbed key={movie.id} movie={movie} />
+        ))}
+      </div>
     </div>
   );
 }
