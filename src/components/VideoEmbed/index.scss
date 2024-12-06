@@ -1,5 +1,13 @@
-.youtube-content{
-    width: 70%;
-    margin: 0 auto;
-    background-color: rebeccapurple;
+.trailler {
+    text-align: center;
+    width: 100%;
+    color: #fff;
+
+    h1{
+        margin-bottom: 15px;
+    }
+
+    iframe {
+        border: none; 
+    }
 }
