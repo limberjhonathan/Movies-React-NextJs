@@ -8,7 +8,7 @@ export interface Props {
 export default function VideoEmbed(props: Props) {
     const movie = props.movie
     return (
-        <div className="youtube-content">
+        <div className="trailler">
             <h1>{movie.name}</h1>
             <iframe
                 key={movie.id}
