@@ -1,5 +1,6 @@
 import axios from "axios";
-import { Video } from "@/types/video";;
+import { Video } from "@/types/video";import { Movie } from "@/types/movie";
+;
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY
 
@@ -23,8 +24,8 @@ export async function GetTrailer(movieId: string, language: string = "pt-BR") {
     }
 }
 
-export async function GetList(language: string = "pt-BR", page: number = 1){
-    try{
+export async function GetList( page: number = 1, language: string = "pt-BR"): Promise<Movie[]> {
+    try {
         const response = await api.get('discover/movie', {
             params: {
                 api_key: API_KEY,
@@ -32,11 +33,11 @@ export async function GetList(language: string = "pt-BR", page: number = 1){
                 include_adult: false,
                 page,
             }
-        }) 
+        });
 
-        return response.data.results
-    }catch{
-        throw new Error("Erro ao buscar filmes")
+        return response.data.results as Movie[];
+    } catch {
+        throw new Error("Erro ao buscar filmes");
     }
 }
 
