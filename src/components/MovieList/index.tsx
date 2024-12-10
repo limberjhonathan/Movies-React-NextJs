@@ -10,6 +10,7 @@ import { GetList } from '@/app/services/movieServices';
 export default function MovieList(){
     const [movies, setMovies] = useState<Movie[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(true)
+    
     useEffect(() => {
         getMovies()
     }, [])
@@ -33,7 +34,7 @@ export default function MovieList(){
 
     return(
         <ul className="movie-list">
-            {movies.map((movie) => 
+            {movies?.map((movie) => 
                 <MovieCard 
                     key={movie.id}
                     movie={movie}
