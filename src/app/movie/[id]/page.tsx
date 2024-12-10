@@ -6,6 +6,7 @@ import VideoEmbed from "@/components/VideoEmbed";
 import { GetTrailer, GetDetails } from "@/app/services/movieServices";
 import MovieDescription from "@/components/MovieDescription";
 import { MovieDiscription } from "@/types/movieDiscription";
+import { OrbitProgress } from 'react-loading-indicators';
 import './page.scss'
 
 interface Props {
@@ -18,6 +19,7 @@ export default function MovieDetails({ params }: Props) {
   const [dubladoVideos, setDubladoVideos] = useState<Video[]>([]);
   const [legendadoVideos, setLegendadoVideos] = useState<Video[]>([]);
   const [detailsMovie, setDetailsMovie] = useState<MovieDiscription>();
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const getDetailsMovie = async () => {
@@ -25,7 +27,7 @@ export default function MovieDetails({ params }: Props) {
         const resolveParam = await params
         const movieDetails: MovieDiscription = await GetDetails(resolveParam.id)
         const videosTrailers: Video[] = await GetTrailer(resolveParam.id)
-        
+
         const dublados = videosTrailers.filter((video: Video) =>
           video.name.includes("Dublado") || video.name.includes("oficial")
         );
@@ -36,8 +38,10 @@ export default function MovieDetails({ params }: Props) {
         setDubladoVideos(dublados);
         setLegendadoVideos(legendados);
         setDetailsMovie(movieDetails)
+
+        setIsLoading(false);
         // setMovieDetails(response.data.results);
-      } catch  {
+      } catch {
         console.error("Erro ao carregar os detalhes do filme:");
       }
     };
@@ -49,6 +53,15 @@ export default function MovieDetails({ params }: Props) {
   // console.log(legendadoVideos, 'legendado')
   const details = dubladoVideos.length > 0 ? dubladoVideos : legendadoVideos;
   console.log(detailsMovie, 'traillers')
+
+  if (isLoading) {
+    return (
+      <div className="loading-container">
+        <OrbitProgress color="#bea422" size="medium" text="" textColor="" />
+      </div>
+    )
+  }
+
   return (
     <div className="content-details">
       {detailsMovie ? (
