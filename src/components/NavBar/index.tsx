@@ -7,7 +7,7 @@ export default function NavBar() {
             <Link href="/" className="page-title">
                 Filmes
             </Link>
-            <Link href='/movies/1'>
+            <Link href='/movies/1' className='all-movies'>
                 Todos os filmes
             </Link>
         </nav>
