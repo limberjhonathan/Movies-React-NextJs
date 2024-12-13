@@ -1,6 +1,6 @@
 import axios from "axios";
-import { Video } from "@/types/video";import { Movie } from "@/types/movie";
-;
+import { Video } from "@/types/video";
+import { Movie } from "@/types/movie";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY
 
@@ -34,7 +34,6 @@ export async function GetList( page: number = 1, language: string = "pt-BR"): Pr
                 page,
             }
         });
-
         return response.data.results as Movie[];
     } catch {
         throw new Error("Erro ao buscar filmes");
