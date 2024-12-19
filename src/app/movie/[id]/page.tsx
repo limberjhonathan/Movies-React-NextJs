@@ -42,6 +42,7 @@ export default function MovieDetails({ params }: Props) {
         setIsLoading(false);
         // setMovieDetails(response.data.results);
       } catch {
+        setIsLoading(false);
         console.error("Erro ao carregar os detalhes do filme:");
       }
     };
@@ -51,7 +52,7 @@ export default function MovieDetails({ params }: Props) {
   // console.log(movieDetails, 'tudo');
   // console.log(dubladoVideos, 'dublado')
   // console.log(legendadoVideos, 'legendado')
-  const details = dubladoVideos.length > 0 ? dubladoVideos : legendadoVideos;
+  // const details = dubladoVideos.length > 0 ? dubladoVideos : legendadoVideos;
   console.log(detailsMovie, 'traillers')
 
   if (isLoading) {
@@ -71,7 +72,7 @@ export default function MovieDetails({ params }: Props) {
       )}
 
       <div className="trailers-wrapper">
-        {details.map((movie) => (
+        {(dubladoVideos.length > 0 ? dubladoVideos : legendadoVideos).map((movie) => (
           <VideoEmbed key={movie.id} movie={movie} />
         ))}
       </div>
